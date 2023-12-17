@@ -8,13 +8,22 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: black;
+            color: purple;
+        }
+
+        h1 {
+            color: purple;
         }
 
         .board {
             display: grid;
             grid-template-columns: repeat(3, 100px);
             grid-gap: 5px;
-            margin-top: 20px;
+            margin: 20px auto;
+            background-color: yellow;
+            padding: 10px;
+            border-radius: 10px;
         }
 
         .cell {
@@ -23,11 +32,26 @@
             border: 2px solid #333;
             font-size: 2em;
             cursor: pointer;
+            color: purple;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .message {
             margin-top: 20px;
             font-size: 1.2em;
+        }
+
+        #startOver {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: purple;
+            color: white;
+            border: none;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -48,6 +72,8 @@
     </div>
 
     <div class="message" id="message"></div>
+
+    <button id="startOver" onclick="startOver()">Start Over</button>
 
     <script>
         let currentPlayer = 'X';
@@ -83,6 +109,19 @@
                 const [a, b, c] = pattern;
                 return board[a] !== '' && board[a] === board[b] && board[b] === board[c];
             });
+        }
+
+        function startOver() {
+            currentPlayer = 'X';
+            board = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+
+            document.getElementById('message').innerText = '';
+            
+            const cells = document.getElementById('board').children;
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].innerText = '';
+            }
         }
     </script>
 
