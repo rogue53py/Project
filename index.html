@@ -10,6 +10,12 @@
             text-align: center;
             background-color: black;
             color: purple;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         h1 {
@@ -21,15 +27,14 @@
             grid-template-columns: repeat(3, 100px);
             grid-gap: 5px;
             margin: 20px auto;
-            background-color: yellow;
+            background-color: transparent;
             padding: 10px;
-            border-radius: 10px;
         }
 
         .cell {
             width: 100px;
             height: 100px;
-            border: 2px solid #333;
+            border: 2px solid yellow;
             font-size: 2em;
             cursor: pointer;
             color: purple;
@@ -44,6 +49,7 @@
         }
 
         #startOver {
+            display: none;
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 1em;
@@ -88,9 +94,11 @@
                 if (checkWin()) {
                     document.getElementById('message').innerText = `${currentPlayer} wins!`;
                     gameActive = false;
+                    document.getElementById('startOver').style.display = 'block';
                 } else if (board.every(cell => cell !== '')) {
                     document.getElementById('message').innerText = 'It\'s a draw!';
                     gameActive = false;
+                    document.getElementById('startOver').style.display = 'block';
                 } else {
                     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                     document.getElementById('message').innerText = `Current Player: ${currentPlayer}`;
@@ -117,6 +125,7 @@
             gameActive = true;
 
             document.getElementById('message').innerText = '';
+            document.getElementById('startOver').style.display = 'none';
             
             const cells = document.getElementById('board').children;
             for (let i = 0; i < cells.length; i++) {
