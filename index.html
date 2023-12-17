@@ -26,19 +26,19 @@
 
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 120px);
+            grid-template-columns: repeat(3, 100px);
             grid-gap: 10px;
             margin: 20px auto;
             background-color: transparent;
-            padding: 20px;
-            border: 4px solid yellow;
+            padding: 10px;
+            border: 2px solid yellow;
             border-radius: 10px;
         }
 
         .cell {
-            width: 120px;
-            height: 120px;
-            border: 4px solid yellow;
+            width: 100px;
+            height: 100px;
+            border: 2px solid yellow;
             font-size: 2.5em;
             cursor: pointer;
             color: purple;
@@ -87,7 +87,7 @@
         .quote {
             margin-top: 20px;
             font-style: italic;
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: red;
             font-family: 'Courier New', Courier, monospace;
         }
@@ -97,16 +97,46 @@
             top: 10px;
             right: 10px;
             font-size: 1.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
-        .menu a {
-            color: yellow;
+        .menu-button {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            background-color: purple;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        .menu-options {
+            display: none;
+            flex-direction: column;
+            background-color: purple;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            top: 40px;
+            right: 0;
+        }
+
+        .menu-options a {
+            color: white;
             text-decoration: none;
-            margin: 0 10px;
+            padding: 5px;
         }
 
-        .menu a:hover {
-            text-decoration: underline;
+        .menu-options a:hover {
+            background-color: #483d8b; /* DarkSlateBlue */
+        }
+
+        .menu:hover .menu-options {
+            display: flex;
         }
     </style>
 </head>
@@ -115,11 +145,11 @@
     <h1>Tic Tac Toe</h1>
 
     <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Games</a>
-        <a href="#">Snake</a>
+        <div class="menu-button">&#8801;</div>
+        <div class="menu-options">
+            <a href="#">Snake</a>
+            <a href="#">Settings</a>
+        </div>
     </div>
 
     <div class="board" id="board">
